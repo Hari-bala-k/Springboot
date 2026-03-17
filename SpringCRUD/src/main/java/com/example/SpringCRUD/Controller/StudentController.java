@@ -6,28 +6,42 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 public class StudentController {
+
     @Autowired
-    StudentService studentService;
+    private StudentService studentService;
 
     @GetMapping("/")
     public String home(){
         return "Student Home page";
     }
-    @GetMapping("StudentData")
+
+    @GetMapping("/StudentData")
     public List<Student> getData(){
         return studentService.getData();
     }
+
     @GetMapping("/StudentData/{rNo}")
     public Student printStudent(@PathVariable("rNo") int rollNo){
-        return studentService.showDetails(rollNo);
-    }
-    @PostMapping("/StudentData")
-    public String addStudent( @RequestBody Student student){
-        studentService.addStudent(student);
-    return "success";
+        return studentService.readStudent(rollNo);
     }
 
+    @PostMapping("/StudentData")
+    public String addStudent(@RequestBody Student student){
+        studentService.creatStudent(student);
+        return "success";
+    }
+
+    @PutMapping("/StudentData")
+    public String updateStudent(@RequestBody Student student){
+        studentService.updateStudent(student);
+        return "Updated Successfully";
+    }
+
+    @DeleteMapping("/StudentData/{id}")
+    public String deleteStudent(@PathVariable int id){
+        studentService.deleteStudent(id);
+        return "Deleted successfully";
+    }
 }
