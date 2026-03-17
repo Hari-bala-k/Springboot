@@ -1,0 +1,31 @@
+package com.example.springJPA.Services;
+
+import com.example.springJPA.Model.Student;
+import com.example.springJPA.Repository.StudentRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class StudentService {
+
+    @Autowired
+    StudentRepo studentRepo;
+    public List<Student> getStudentDetails() {
+        return studentRepo.findAll();
+    }
+
+
+    public void addStudent(Student student) {
+        studentRepo.save(student);
+    }
+
+    public void updateStudent(Student student) {
+        studentRepo.save(student);
+    }
+
+    public void deleteAllStudent(Student student) {
+        studentRepo.deleteAll();
+    }
+}
