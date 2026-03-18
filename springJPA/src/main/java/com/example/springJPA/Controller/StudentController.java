@@ -16,6 +16,10 @@ public class StudentController {
     public List<Student> readStudent(){
         return studentService.getStudentDetails();
     }
+    @GetMapping("/students/{id}")
+    public Student getStudent(@PathVariable int id){
+        return studentService.getStudent(id);
+    }
     @PostMapping("/students")
     public String creatStudent(@RequestBody Student student){
         studentService.addStudent(student);
@@ -30,6 +34,11 @@ public class StudentController {
     public String deleteAllStudent(Student student){
         studentService.deleteAllStudent(student);
         return"cleared..";
+    }
+    @DeleteMapping("/students/{id}")
+    public String deleteStudent(@PathVariable int id){
+        studentService.deleteStudent(id);
+        return "deleted";
     }
 
 }
