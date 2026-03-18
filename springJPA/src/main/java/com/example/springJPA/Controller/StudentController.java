@@ -40,5 +40,8 @@ public class StudentController {
         studentService.deleteStudent(id);
         return "deleted";
     }
-
+    @GetMapping("/students/technology/{tech}")
+    public List<Student> getStudentByTech(@PathVariable("tech") String technology){
+        return studentService.studentByTech(technology);
+    }
 }
