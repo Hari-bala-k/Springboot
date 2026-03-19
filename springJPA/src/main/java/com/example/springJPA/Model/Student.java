@@ -16,4 +16,5 @@ public class Student {
     private int stuID;
     private String stuName;
     private String stuTech;
+    private String gender;
 }

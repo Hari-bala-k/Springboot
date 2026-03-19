@@ -49,4 +49,11 @@ public class StudentController {
     public List<Student> getStudentByIdAndTech(@RequestParam ("stuID") int stuID,@RequestParam("stuTech") String stuTech){
         return studentService.getStudentByIdAndTech(stuID,stuTech);
     }
+
+    @GetMapping("/students/filterGen")
+    public List<Student> getStudentByGenAndTech(@RequestParam("stuTech") String tech,
+                                                @RequestParam("gender") String gender){
+        return studentService.getStudentByGenAndTech(tech,gender);
+
+    }
 }
