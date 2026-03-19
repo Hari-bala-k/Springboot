@@ -41,4 +41,8 @@ public class StudentService {
     public List<Student> studentByTech(String technology) {
         return studentRepo.findBystuTech(technology);
     }
+
+    public List<Student> getStudentByIdAndTech(int stuID, String stuTech) {
+        return studentRepo.findByIdAndTech(stuID,stuTech);
+    }
 }
