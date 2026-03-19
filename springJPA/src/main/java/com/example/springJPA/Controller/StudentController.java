@@ -3,6 +3,7 @@ package com.example.springJPA.Controller;
 import com.example.springJPA.Model.Student;
 import com.example.springJPA.Services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -43,5 +44,9 @@ public class StudentController {
     @GetMapping("/students/technology/{tech}")
     public List<Student> getStudentByTech(@PathVariable("tech") String technology){
         return studentService.studentByTech(technology);
+    }
+    @GetMapping("/students/filter")
+    public List<Student> getStudentByIdAndTech(@RequestParam ("stuID") int stuID,@RequestParam("stuTech") String stuTech){
+        return studentService.getStudentByIdAndTech(stuID,stuTech);
     }
 }
