@@ -31,7 +31,7 @@ public class StudentService {
     }
 
     public Student getStudent(int id) {
-        return studentRepo.findById(id).orElse(new Student());
+        return studentRepo.findById(id).orElse(null);
     }
 
     public void deleteStudent(int id) {
