@@ -4,6 +4,9 @@ import com.example.springJPA.Model.Student;
 import com.example.springJPA.Services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,13 +21,15 @@ public class StudentController {
         return studentService.getStudentDetails();
     }
     @GetMapping("/students/{id}")
-    public Student getStudent(@PathVariable int id){
-        return studentService.getStudent(id);
+    public ResponseEntity<Student> getStudent(@PathVariable int id){
+         Student stu = studentService.getStudent(id);
+         if(stu == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+         return new ResponseEntity<>(stu,HttpStatus.OK);
     }
     @PostMapping("/students")
-    public String creatStudent(@RequestBody Student student){
+    public ResponseEntity<String> creatStudent(@RequestBody Student student){
         studentService.addStudent(student);
-        return "Success..";
+        return new ResponseEntity<>("Success..",HttpStatus.CREATED);
     }
     @PutMapping("/students")
     public String updateStudent(@RequestBody Student student){
