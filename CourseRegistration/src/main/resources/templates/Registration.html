@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: #ececec;
+            padding: 35px;
+            width: 380px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102,126,234,0.5);
+        }
+
+        label {
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background: #fff;
+            padding: 0 5px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 13px;
+            color: #777;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="card">
+        <h2>Course Registration</h2>
+
+        <form action="http://localhost:8080/courses/register" method="post">
+
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="emailId" required>
+            </div>
+
+            <div class="form-group">
+                <label>Select Course</label>
+                <select name="courseName">
+                    <option value="Fullstack">Fullstack Development</option>
+                    <option value="Springboot">Springboot Advance</option>
+                    <option value="NodeJS">Node JS</option>
+                    <option value="ReactJS">React JS</option>
+                </select>
+            </div>
+
+            <button type="submit">Register Now</button>
+
+        </form>
+
+        <div class="footer">
+            Build your future 🚀
+        </div>
+    </div>
+
+</body>
+</html>
