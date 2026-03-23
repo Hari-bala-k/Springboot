@@ -4,8 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="Script.js"></script>
 </head>
 <body>
-    <h1>Hi courses</h1>
+
+<table align="center" border="1">
+    <tr align="center" style="background-color: lightblue;">
+        <th width="100">courseId</th>
+        <th width="150">courseName</th>
+        <th width="150">duration</th>
+         <th width="150">trainee</th>
+    </tr>
+
+    <tbody align="center" id="coursetable">
+    </tbody>
+</table>
+
+<script>
+    window.onload = function () {
+        showCourse();
+    };
+</script>
+
 </body>
 </html>

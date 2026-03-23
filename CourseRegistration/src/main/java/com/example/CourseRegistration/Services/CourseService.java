@@ -29,4 +29,8 @@ public class CourseService {
         CourseRegistry courseRegistry= new CourseRegistry(name,emailId,courseName);
          courseRegistryRepo.save(courseRegistry);
     }
+
+    public void addCourse(Course course) {
+        courseRepo.save(course);
+    }
 }
