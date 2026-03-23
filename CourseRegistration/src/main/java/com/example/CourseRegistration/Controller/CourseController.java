@@ -4,14 +4,12 @@ import com.example.CourseRegistration.Model.Course;
 import com.example.CourseRegistration.Model.CourseRegistry;
 import com.example.CourseRegistration.Services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class CourseController {
     @Autowired
     CourseService courseService;
@@ -24,6 +22,12 @@ public class CourseController {
     public List<CourseRegistry> getEntrolldetails(){
         return courseService.getEnroll();
     }
+
+    @PostMapping("/courses")
+    public String addCourse(@RequestBody Course course){
+        courseService.addCourse(course);
+        return "success!!";
+    }
     @PostMapping("/courses/register")
     public String  Registration(@RequestParam("name") String name,
                                                  @RequestParam("emailId") String emailId,
@@ -32,5 +36,6 @@ public class CourseController {
          return "Congracts "+name+" successfully registered "+courseName;
 
     }
+
 
 }
