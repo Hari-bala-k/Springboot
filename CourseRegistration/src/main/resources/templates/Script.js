@@ -15,4 +15,24 @@ function showCourse() {
                 dataTable.innerHTML += row;
             });
         });
+
+}
+function showEnrolledStudents() {
+    fetch("http://localhost:8080/courses/enroll")
+    .then(res => res.json())
+    .then(students => {
+        const dataTable = document.getElementById("enrolltable");
+
+        let rows = "";
+
+        students.forEach(student => {
+            rows += `<tr>
+                <td>${student.courseName}</td>
+                <td>${student.emailId}</td>
+                <td>${student.name}</td>
+            </tr>`;
+        });
+
+        dataTable.innerHTML = rows;
+    });
 }
